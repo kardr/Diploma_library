@@ -1,6 +1,9 @@
-﻿using System;
+﻿using FastReport;
+using FastReport.Utils;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,12 +12,65 @@ namespace Diploma
 {
     public  class Diploma
     {
+       
         string connection_string = "";
+        Report report;
+        List<ReportPage> page = new List<ReportPage>();
         public Diploma(string new_connection_string) // конструктор, в котором указывается подключение к БД
         {
             connection_string = new_connection_string;
+            report = new Report();
         }
 
+        public void Add_report_page(int widht, int height)
+        {
+            ReportPage page1 = new ReportPage();
+            page.Add(page1);
+            
+            page[0].Name = "Page1";
+            page[0].PaperWidth = widht;
+            page[0].PaperHeight = height;
+            report.Pages.Add(page[0]);
+            page[0].LeftMargin = 0;
+            page[0].RightMargin = 0;
+            page[0].TopMargin = 0;
+            page[0].BottomMargin = 0;
+        }
+
+         public  Report Test_Report(string titel)
+        {
+
+            Add_report_page(297, 210);
+            // create ReportTitle band 
+            page[0].ReportTitle = new ReportTitleBand();
+            page[0].ReportTitle.Name = titel;
+            // set its height to 1.5cm
+            page[0].ReportTitle.Height = Units.Centimeters * 1.5f;
+
+
+            PictureObject picture = new PictureObject();
+            //picture.ForceLoadImage("C://Users//Svetlana//Desktop//1.jpg");
+
+
+            picture.Bounds = new RectangleF(0, 0, Units.Centimeters * 21, Units.Centimeters * 20); //Set object bounds
+            picture.Image = new Bitmap("D://CuL4jVhrLi0.jpg"); //Set picture
+            page[0].ReportTitle.Objects.Add(picture);
+
+
+            TextObject text1 = new TextObject(); 
+            text1.Name = "Text1";
+            // set bounds
+            text1.Bounds = new RectangleF(0, 0, Units.Centimeters * 19, Units.Centimeters * 1);
+            // set text
+            text1.Text = titel;
+            // set appearance
+            text1.HorzAlign = HorzAlign.Center;
+            text1.Font = new Font("Times New Roman", 14, FontStyle.Italic);
+            // add it to ReportTitle 
+            page[0].ReportTitle.Objects.Add(text1);
+
+            return report;
+        }
 
         public void Diploma_add_maquette()
         {
@@ -102,7 +158,7 @@ namespace Diploma
             SqlCommand command = new SqlCommand(s, conn);
             SqlDataReader reader = command.ExecuteReader();
             int k = 0;
-            int c = 0;
+            //int c = 0;
             while (reader.Read())
             {
 
@@ -246,7 +302,7 @@ namespace Diploma
             SqlCommand command = new SqlCommand(s, conn);
             SqlDataReader reader = command.ExecuteReader();
             int k = 0;
-            int c = 0;
+            //int c = 0;
             while (reader.Read())
             {
 
@@ -393,7 +449,7 @@ namespace Diploma
             SqlCommand command = new SqlCommand(s, conn);
             SqlDataReader reader = command.ExecuteReader();
             int k = 0;
-            int c = 0;
+            //int c = 0;
             while (reader.Read())
             {
 
