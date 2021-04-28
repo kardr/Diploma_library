@@ -22,6 +22,7 @@ namespace Diploma
             report = new Report();
         }
 
+       
         public void Add_report_page(int widht, int height)
         {
             ReportPage page1 = new ReportPage();
@@ -37,10 +38,10 @@ namespace Diploma
             page[0].BottomMargin = 0;
         }
 
-         public  Report Test_Report(string titel)
+         public  Report Test_Report(string titel, int nHeight, int nWidth)
         {
 
-            Add_report_page(297, 210);
+            Add_report_page(nHeight, nWidth);
             // create ReportTitle band 
             page[0].ReportTitle = new ReportTitleBand();
             page[0].ReportTitle.Name = titel;
@@ -80,10 +81,159 @@ namespace Diploma
         public void Diploma_delete_maquette(int nid)
         {
             Maquette a = new Maquette();
-            a.delete_maquette(nid, connection_string);
+            a.Delete_maquette(nid, connection_string);
         }
 
     }
+    
+    public class Format
+    {
+        public int id;
+        public  string Name_format;
+        public int Height;
+        public  int Width;
+        public Format()
+        {
+
+        }
+        public Format(Format nF)
+        {
+            id = nF.id;
+             Name_format = nF.Name_format;
+            Height = nF.Height;
+             Width = nF.Width;
+        }
+
+        public override string ToString()
+        {
+            return Name_format;
+
+        }
+        public Format(int nid, string nName_format, int nHeight, int nWidth)
+        {
+             id = nid;
+             Name_format = nName_format;
+             Height = nHeight;
+             Width = nWidth;
+        }
+        public bool Add_format(string nName_format, int nWidth, int nHeight, string nconnection_string)
+        {
+            int k = Select_format(nWidth, nHeight, nconnection_string);
+            if (k == 0)
+            {
+
+
+                SqlConnection conn = new SqlConnection(nconnection_string);
+                conn.Open();
+                string d = "SELECT MAX(id) FROM Format";
+                SqlCommand command = new SqlCommand(d, conn);
+                SqlDataReader reader = command.ExecuteReader();
+                int count_id = 0;
+
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    count_id = Convert.ToInt32(reader.GetValue(0)) + 1;
+                    conn.Close();
+                }
+
+                if (count_id == 0)
+                {
+                    count_id++;
+                }
+                conn.Open();
+                string z = "INSERT INTO Format(id, Name_format, Height, Width) " +
+                    "VALUES ( " + count_id + ", '" + nName_format + "', " + nHeight + "," + nWidth + " )";
+                SqlCommand command2 = new SqlCommand(z, conn);
+                command2.ExecuteNonQuery();
+                conn.Close();
+                return true;
+            }
+            else
+                return false;
+        }
+
+        public int Select_format(int nWidth, int nHeight, string nconnection_string)
+        {
+            int f = 0;
+            SqlConnection conn = new SqlConnection(nconnection_string);
+            conn.Open();
+            string d = "SELECT * FROM Format WHERE Height = " + nHeight + " AND Width = " + nWidth + "";
+            SqlCommand command = new SqlCommand(d, conn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                f = Convert.ToInt32(reader.GetValue(0));
+                conn.Close();
+            }
+
+
+            return f;
+        }
+
+        public string Select_name_format(int nid, string nconnection_string)
+        {
+            string s = "";
+            SqlConnection conn = new SqlConnection(nconnection_string);
+            conn.Open();
+            string d = "SELECT * FROM Format WHERE id = " + nid + "";
+            SqlCommand command = new SqlCommand(d, conn);
+            SqlDataReader reader = command.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                s = reader.GetValue(1).ToString();
+                conn.Close();
+            }
+
+            return s;
+        }
+
+        public List<Format> Select_Formats(string nconnection_string)
+        {
+            SqlConnection conn = new SqlConnection(nconnection_string);
+
+            List<Format> m = new List<Format>();
+            conn.Open();
+            string s = "SELECT * FROM Format";
+            SqlCommand command = new SqlCommand(s, conn);
+            SqlDataReader reader = command.ExecuteReader();
+            int k = 0;
+            //int c = 0;
+            while (reader.Read())
+            {
+
+                Format maq = new Format(Convert.ToInt32(reader.GetValue(0)),
+                        Convert.ToString(reader.GetValue(1)),
+                         Convert.ToInt32(reader.GetValue(2)),
+                         Convert.ToInt32(reader.GetValue(3))
+                        );
+                m.Add(maq);
+                k++;
+
+            }
+
+            return m;
+        }
+        //добавть удаление макета по Id
+        public void Delete_Format(int nid, string nconnection_string)
+        {
+            SqlConnection conn = new SqlConnection(nconnection_string);
+
+            conn.Open();
+            string z = "DELETE FROM Format WHERE id =" + nid;
+            SqlCommand command2 = new SqlCommand(z, conn);
+            command2.ExecuteNonQuery();
+            conn.Close();
+        }
+
+
+
+    }
+
     public class Maquette 
     {
         int id;
@@ -108,7 +258,7 @@ namespace Diploma
             int Width = nWidth;
         }
         
-        public void add_maquette(string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
+        public void Add_maquette(string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
             conn.Open();
@@ -137,7 +287,7 @@ namespace Diploma
             conn.Close();
         }
 
-        public void delete_maquette(int nid, string nconnection_string)
+        public void Delete_maquette(int nid, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
@@ -148,7 +298,7 @@ namespace Diploma
             conn.Close();
         }
 
-        public List <Maquette> select_maquetts(string nconnection_string)
+        public List <Maquette> Select_maquetts(string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
@@ -177,7 +327,7 @@ namespace Diploma
             return m;
         }
 
-        public Maquette select_maquette(int nid, string nconnection_string)
+        public Maquette Select_maquette(int nid, string nconnection_string)
         {
             
 
@@ -200,7 +350,7 @@ namespace Diploma
             }
             return m;
         }
-        public void update_maquette(int nid, string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
+        public void Update_maquette(int nid, string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
@@ -250,7 +400,7 @@ namespace Diploma
             int id_maquette_fk = nid_maquette_fk;
         }
 
-        public void add_text_blocks(string nName_blocks, string nContent, string nFont_type, string nAlignment_text,  
+        public void Add_text_blocks(string nName_blocks, string nContent, string nFont_type, string nAlignment_text,  
             string nMark_text, int nFont_size,  int nHeight, int nWidth, int nX, int nY, int nid_maquette_fk, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
@@ -281,7 +431,7 @@ namespace Diploma
             conn.Close();
         }
 
-        public void delete_text_blocks(int nid, string nconnection_string)
+        public void Delete_text_blocks(int nid, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
@@ -292,7 +442,7 @@ namespace Diploma
             conn.Close();
         }
 
-        public List<Text_blocks> select_text_blocks(string nconnection_string)
+        public List<Text_blocks> Select_text_blocks(string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
@@ -327,7 +477,7 @@ namespace Diploma
             return m;
         }
 
-        public Text_blocks select_text_block(int nid, string nconnection_string)
+        public Text_blocks Select_text_block(int nid, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
             conn.Open();
@@ -355,7 +505,7 @@ namespace Diploma
             }
             return m;
         }
-        public void update_text_blocks(int nid, string nName_blocks, string nContent, string nFont_type, string nAlignment_text,
+        public void Update_text_blocks(int nid, string nName_blocks, string nContent, string nFont_type, string nAlignment_text,
             string nMark_text, int nFont_size, int nHeight, int nWidth, int nX, int nY,  string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
@@ -399,7 +549,7 @@ namespace Diploma
             int Y = nY;
             int id_maquette_fk = nid_maquette_fk;
         }
-        public void add_image_blocks(string nName_blocks, string nImage_content, int nHeight, int nWidth, int nX, int nY, string nconnection_string)
+        public void Add_image_blocks(string nName_blocks, string nImage_content, int nHeight, int nWidth, int nX, int nY, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
             conn.Open();
@@ -428,7 +578,7 @@ namespace Diploma
             conn.Close();
         }
 
-        public void delete_image_blocks(int nid, string nconnection_string)
+        public void Delete_image_blocks(int nid, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
@@ -439,7 +589,7 @@ namespace Diploma
             conn.Close();
         }
 
-        public List<Image_blocks> select_image_blocks(string nconnection_string)
+        public List<Image_blocks> Select_image_blocks(string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
@@ -469,7 +619,7 @@ namespace Diploma
             return m;
         }
 
-        public Image_blocks select_image_block(int nid, string nconnection_string)
+        public Image_blocks Select_image_block(int nid, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
             conn.Open();
@@ -493,7 +643,7 @@ namespace Diploma
            
             return m;
         }
-        public void update_image_blocks(int nid, string nName_blocks, string nImage_content, int nHeight, int nWidth, int nX, int nY, string nconnection_string)
+        public void Update_image_blocks(int nid, string nName_blocks, string nImage_content, int nHeight, int nWidth, int nX, int nY, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
