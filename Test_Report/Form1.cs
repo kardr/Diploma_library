@@ -171,10 +171,11 @@ namespace Test_Report
             if (f.ShowDialog() == DialogResult.OK)
             {
                 Diploma.Text_blocks t = new Diploma.Text_blocks();
-                t.Add_text_blocks(f.textBox1.Text, f.textBox2.Text, f.textBox3.Text, f.comboBox1.Text, 
+                 t.Add_text_blocks(f.textBox1.Text, f.textBox2.Text, f.textBox3.Text, f.comboBox1.Text, 
                     f.textBox4.Text, Convert.ToInt32(f.textBox5.Text), Convert.ToInt32(f.numericUpDown3.Value),
                     Convert.ToInt32(f.numericUpDown4.Value), Convert.ToInt32(f.numericUpDown1.Value),
                     Convert.ToInt32(f.numericUpDown2.Value), 1, Program.connection_str);
+
             }
         }
 
@@ -241,7 +242,7 @@ namespace Test_Report
                     }
                 }
                // Load_image_blocks();
-              //  Load_text_blocks();
+               // Load_text_blocks();
                 comboBox1.SelectedIndex = k;
                // comboBox1.SelectedValue = m.id_fk_format;
             }

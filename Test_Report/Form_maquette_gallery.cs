@@ -104,5 +104,10 @@ namespace Test_Report
             Button_Enabled();
             Load_Image();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

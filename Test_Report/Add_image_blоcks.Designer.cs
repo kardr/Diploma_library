@@ -146,7 +146,7 @@ namespace Test_Report
             // 
             this.button_Cancle.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancle.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_Cancle.Location = new System.Drawing.Point(354, 390);
+            this.button_Cancle.Location = new System.Drawing.Point(654, 404);
             this.button_Cancle.Name = "button_Cancle";
             this.button_Cancle.Size = new System.Drawing.Size(79, 34);
             this.button_Cancle.TabIndex = 60;
@@ -157,7 +157,7 @@ namespace Test_Report
             // 
             this.button_OK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.button_OK.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button_OK.Location = new System.Drawing.Point(451, 390);
+            this.button_OK.Location = new System.Drawing.Point(739, 404);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(79, 34);
             this.button_OK.TabIndex = 59;
@@ -191,8 +191,8 @@ namespace Test_Report
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Location = new System.Drawing.Point(311, 34);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(265, 350);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.Size = new System.Drawing.Size(492, 350);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 63;
             this.pictureBox1.TabStop = false;
             // 
@@ -206,7 +206,7 @@ namespace Test_Report
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_Cancle;
-            this.ClientSize = new System.Drawing.Size(631, 450);
+            this.ClientSize = new System.Drawing.Size(830, 450);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.add_file_button);

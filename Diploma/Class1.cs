@@ -239,7 +239,6 @@ namespace Diploma
             string z = "SELECT * FROM Format WHERE id =" + nid;
             SqlCommand command2 = new SqlCommand(z, conn);
             SqlDataReader reader = command2.ExecuteReader();
-            int k = 0;
             //int c = 0;
             reader.Read();
             

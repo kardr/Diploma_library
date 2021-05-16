@@ -40,5 +40,15 @@ namespace Test_Report
                 label2.Text = openFileDialog1.FileName;
             }
         }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_ok_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

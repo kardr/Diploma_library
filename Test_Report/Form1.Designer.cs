@@ -45,11 +45,7 @@ namespace Test_Report
             this.выборМакетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_add1 = new System.Windows.Forms.Button();
             this.button_delete1 = new System.Windows.Forms.Button();
             this.button_delete2 = new System.Windows.Forms.Button();
@@ -60,6 +56,10 @@ namespace Test_Report
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -109,27 +109,27 @@ namespace Test_Report
             this.добавитьНовыйФорматToolStripMenuItem,
             this.редактроватьФорматToolStripMenuItem});
             this.работаСФорматамиToolStripMenuItem.Name = "работаСФорматамиToolStripMenuItem";
-            this.работаСФорматамиToolStripMenuItem.Size = new System.Drawing.Size(120, 20);
+            this.работаСФорматамиToolStripMenuItem.Size = new System.Drawing.Size(134, 20);
             this.работаСФорматамиToolStripMenuItem.Text = "Работа с форматами";
             // 
             // добавитьНовыйФорматToolStripMenuItem
             // 
             this.добавитьНовыйФорматToolStripMenuItem.Name = "добавитьНовыйФорматToolStripMenuItem";
-            this.добавитьНовыйФорматToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.добавитьНовыйФорматToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.добавитьНовыйФорматToolStripMenuItem.Text = "Добавить новый формат";
             this.добавитьНовыйФорматToolStripMenuItem.Click += new System.EventHandler(this.добавитьНовыйФорматToolStripMenuItem_Click);
             // 
             // редактроватьФорматToolStripMenuItem
             // 
             this.редактроватьФорматToolStripMenuItem.Name = "редактроватьФорматToolStripMenuItem";
-            this.редактроватьФорматToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.редактроватьФорматToolStripMenuItem.Size = new System.Drawing.Size(212, 22);
             this.редактроватьФорматToolStripMenuItem.Text = "Редактровать форматы";
             this.редактроватьФорматToolStripMenuItem.Click += new System.EventHandler(this.редактроватьФорматToolStripMenuItem_Click);
             // 
             // работаСоСтрокойПодключенияToolStripMenuItem
             // 
             this.работаСоСтрокойПодключенияToolStripMenuItem.Name = "работаСоСтрокойПодключенияToolStripMenuItem";
-            this.работаСоСтрокойПодключенияToolStripMenuItem.Size = new System.Drawing.Size(181, 20);
+            this.работаСоСтрокойПодключенияToolStripMenuItem.Size = new System.Drawing.Size(198, 20);
             this.работаСоСтрокойПодключенияToolStripMenuItem.Text = "Работа со строкой подключения";
             this.работаСоСтрокойПодключенияToolStripMenuItem.Click += new System.EventHandler(this.работаСоСтрокойПодключенияToolStripMenuItem_Click);
             // 
@@ -138,14 +138,14 @@ namespace Test_Report
             this.работаСТекстомToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.добавтьТекстовыйБлокToolStripMenuItem});
             this.работаСТекстомToolStripMenuItem.Name = "работаСТекстомToolStripMenuItem";
-            this.работаСТекстомToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.работаСТекстомToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.работаСТекстомToolStripMenuItem.Text = "Работа с текстом";
             this.работаСТекстомToolStripMenuItem.Click += new System.EventHandler(this.работаСТекстомToolStripMenuItem_Click);
             // 
             // добавтьТекстовыйБлокToolStripMenuItem
             // 
             this.добавтьТекстовыйБлокToolStripMenuItem.Name = "добавтьТекстовыйБлокToolStripMenuItem";
-            this.добавтьТекстовыйБлокToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.добавтьТекстовыйБлокToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.добавтьТекстовыйБлокToolStripMenuItem.Text = "Добавть текстовый блок";
             this.добавтьТекстовыйБлокToolStripMenuItem.Click += new System.EventHandler(this.добавтьТекстовыйБлокToolStripMenuItem_Click);
             // 
@@ -156,43 +156,43 @@ namespace Test_Report
             this.добавлениеФонаToolStripMenuItem,
             this.добавтьГрафическийБлокToolStripMenuItem});
             this.работаСИзображениемToolStripMenuItem.Name = "работаСИзображениемToolStripMenuItem";
-            this.работаСИзображениемToolStripMenuItem.Size = new System.Drawing.Size(136, 20);
+            this.работаСИзображениемToolStripMenuItem.Size = new System.Drawing.Size(152, 20);
             this.работаСИзображениемToolStripMenuItem.Text = "Работа с изображением";
             // 
             // выборФонаToolStripMenuItem
             // 
             this.выборФонаToolStripMenuItem.Name = "выборФонаToolStripMenuItem";
-            this.выборФонаToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.выборФонаToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.выборФонаToolStripMenuItem.Text = "Выбор фона";
             this.выборФонаToolStripMenuItem.Click += new System.EventHandler(this.выборФонаToolStripMenuItem_Click);
             // 
             // добавлениеФонаToolStripMenuItem
             // 
             this.добавлениеФонаToolStripMenuItem.Name = "добавлениеФонаToolStripMenuItem";
-            this.добавлениеФонаToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.добавлениеФонаToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
             this.добавлениеФонаToolStripMenuItem.Text = "Добавление фона";
             this.добавлениеФонаToolStripMenuItem.Click += new System.EventHandler(this.добавлениеФонаToolStripMenuItem_Click);
             // 
             // добавтьГрафическийБлокToolStripMenuItem
             // 
             this.добавтьГрафическийБлокToolStripMenuItem.Name = "добавтьГрафическийБлокToolStripMenuItem";
-            this.добавтьГрафическийБлокToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.добавтьГрафическийБлокToolStripMenuItem.Text = "Добавть графический блок";
+            this.добавтьГрафическийБлокToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.добавтьГрафическийБлокToolStripMenuItem.Text = "Добавить графический блок";
             this.добавтьГрафическийБлокToolStripMenuItem.Click += new System.EventHandler(this.добавтьГрафическийБлокToolStripMenuItem_Click);
             // 
             // выборМакетаToolStripMenuItem
             // 
             this.выборМакетаToolStripMenuItem.Name = "выборМакетаToolStripMenuItem";
-            this.выборМакетаToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.выборМакетаToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
             this.выборМакетаToolStripMenuItem.Text = "Выбор макета";
             this.выборМакетаToolStripMenuItem.Click += new System.EventHandler(this.выборМакетаToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(493, 54);
+            this.pictureBox1.Location = new System.Drawing.Point(509, 54);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(289, 362);
+            this.pictureBox1.Size = new System.Drawing.Size(273, 362);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -210,17 +210,6 @@ namespace Test_Report
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Name";
-            this.Column2.Name = "Column2";
-            // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -232,17 +221,6 @@ namespace Test_Report
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.Size = new System.Drawing.Size(148, 197);
             this.dataGridView2.TabIndex = 9;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "id";
-            this.Column3.Name = "Column3";
-            this.Column3.Visible = false;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Name";
-            this.Column4.Name = "Column4";
             // 
             // button_add1
             // 
@@ -292,9 +270,10 @@ namespace Test_Report
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 39);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(6, 38);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 15);
+            this.label2.Size = new System.Drawing.Size(45, 19);
             this.label2.TabIndex = 15;
             this.label2.Text = "label2";
             // 
@@ -347,6 +326,28 @@ namespace Test_Report
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Графические блоки";
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "id";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Наименование";
+            this.Column4.Name = "Column4";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Наименование";
+            this.Column2.Name = "Column2";
             // 
             // Form1
             // 
@@ -403,14 +404,14 @@ namespace Test_Report
         private System.Windows.Forms.ToolStripMenuItem редактроватьФорматToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выборМакетаToolStripMenuItem;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
     }
 }
 
