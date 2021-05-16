@@ -11,6 +11,10 @@ namespace Test_Report
         /// <summary>
         /// Главная точка входа для приложения.
         /// </summary>
+          public static string connection_str =  @"Data Source = KRNALX\KRNALX; Initial Catalog = Diplomа_library; Integrated Security = True";
+        public static int Maquette_id = 0;
+        public static string Maquette_name = "";
+
         [STAThread]
         static void Main()
         {

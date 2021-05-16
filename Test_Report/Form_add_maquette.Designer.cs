@@ -42,6 +42,8 @@ namespace Test_Report
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -51,17 +53,19 @@ namespace Test_Report
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 254);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(62, 118);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.Size = new System.Drawing.Size(88, 15);
             this.label2.TabIndex = 20;
             this.label2.Text = "Файл не выбран";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(43, 196);
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(55, 66);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 55);
+            this.button1.Size = new System.Drawing.Size(110, 45);
             this.button1.TabIndex = 19;
             this.button1.Text = "Выбрать файл";
             this.button1.UseVisualStyleBackColor = true;
@@ -70,23 +74,25 @@ namespace Test_Report
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 123);
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(62, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(79, 15);
             this.label1.TabIndex = 18;
             this.label1.Text = "Наименование";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(43, 139);
+            this.textBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(55, 40);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(110, 20);
+            this.textBox1.Size = new System.Drawing.Size(110, 21);
             this.textBox1.TabIndex = 17;
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(439, 26);
+            this.pictureBox1.Location = new System.Drawing.Point(338, 24);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(265, 350);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -96,7 +102,8 @@ namespace Test_Report
             // button_cancel
             // 
             this.button_cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button_cancel.Location = new System.Drawing.Point(489, 394);
+            this.button_cancel.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_cancel.Location = new System.Drawing.Point(395, 385);
             this.button_cancel.Name = "button_cancel";
             this.button_cancel.Size = new System.Drawing.Size(75, 23);
             this.button_cancel.TabIndex = 15;
@@ -106,7 +113,8 @@ namespace Test_Report
             // button_ok
             // 
             this.button_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.button_ok.Location = new System.Drawing.Point(581, 394);
+            this.button_ok.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button_ok.Location = new System.Drawing.Point(476, 385);
             this.button_ok.Name = "button_ok";
             this.button_ok.Size = new System.Drawing.Size(75, 23);
             this.button_ok.TabIndex = 14;
@@ -119,21 +127,23 @@ namespace Test_Report
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(294, 64);
+            this.numericUpDown1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown1.Location = new System.Drawing.Point(55, 167);
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(120, 21);
             this.numericUpDown1.TabIndex = 21;
             // 
             // numericUpDown2
             // 
-            this.numericUpDown2.Location = new System.Drawing.Point(294, 116);
+            this.numericUpDown2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.numericUpDown2.Location = new System.Drawing.Point(55, 219);
             this.numericUpDown2.Name = "numericUpDown2";
-            this.numericUpDown2.Size = new System.Drawing.Size(120, 20);
+            this.numericUpDown2.Size = new System.Drawing.Size(120, 21);
             this.numericUpDown2.TabIndex = 22;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(309, 163);
+            this.pictureBox2.Location = new System.Drawing.Point(65, 260);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(105, 104);
             this.pictureBox2.TabIndex = 23;
@@ -141,13 +151,34 @@ namespace Test_Report
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(294, 287);
+            this.button2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(55, 370);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(120, 38);
             this.button2.TabIndex = 24;
-            this.button2.Text = "выбор фонового цвета";
+            this.button2.Text = "Выбор фонового цвета";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(90, 151);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 15);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(90, 203);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 15);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "label4";
             // 
             // Form_add_maquette
             // 
@@ -155,7 +186,9 @@ namespace Test_Report
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.button_cancel;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(682, 450);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.numericUpDown2);
@@ -194,5 +227,7 @@ namespace Test_Report
         public System.Windows.Forms.PictureBox pictureBox2;
         public System.Windows.Forms.ColorDialog colorDialog1;
         public System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
     }
 }

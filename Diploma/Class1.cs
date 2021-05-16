@@ -47,13 +47,14 @@ namespace Diploma
             page[0].ReportTitle.Name = titel;
             // set its height to 1.5cm
             page[0].ReportTitle.Height = Units.Centimeters * 1.5f;
+            
 
 
             PictureObject picture = new PictureObject();
             //picture.ForceLoadImage("C://Users//Svetlana//Desktop//1.jpg");
 
 
-            picture.Bounds = new RectangleF(0, 0, Units.Centimeters * 21, Units.Centimeters * 20); //Set object bounds
+            picture.Bounds = new RectangleF(0, 0, nWidth*2,nHeight*2); //Set object bounds
             picture.Image = new Bitmap("D://CuL4jVhrLi0.jpg"); //Set picture
             page[0].ReportTitle.Objects.Add(picture);
 
@@ -230,32 +231,65 @@ namespace Diploma
             conn.Close();
         }
 
+        public Format Select_format_id(int nid, string nconnection_string)
+        {
+            SqlConnection conn = new SqlConnection(nconnection_string);
 
+            conn.Open();
+            string z = "SELECT * FROM Format WHERE id =" + nid;
+            SqlCommand command2 = new SqlCommand(z, conn);
+            SqlDataReader reader = command2.ExecuteReader();
+            int k = 0;
+            //int c = 0;
+            reader.Read();
+            
 
+             Format f = new Format(Convert.ToInt32(reader.GetValue(0)),
+                        Convert.ToString(reader.GetValue(1)),
+                         Convert.ToInt32(reader.GetValue(2)),
+                         Convert.ToInt32(reader.GetValue(3))
+                        );
+               
+            conn.Close();
+            return f;
+        }
+
+        public void Update_format(int nid, string nName_format, int nHeight, int nWidth, string nconnection_string)
+        {
+            SqlConnection conn = new SqlConnection(nconnection_string);
+
+            conn.Open();
+            string z = "UPDATE Format SET Name_format = '" + nName_format + "', Height = " + nHeight + ", Width = " + nWidth + " WHERE id = " + nid;
+            SqlCommand command2 = new SqlCommand(z, conn);
+            command2.ExecuteNonQuery();
+            conn.Close();
+        }
     }
 
     public class Maquette 
     {
-        int id;
-        string Name_maquette;
-        string Background_image;
-        string Background_color;
-        int Height;
-        int Width;
+       public int id;
+        public string Name_maquette;
+        public string Background_image;
+        public string Background_color;
+        public int Height;
+        public int Width;
+        public int id_fk_format;
 
         public Maquette()
         {
 
         }
 
-        public Maquette(int nid, string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth)
+        public Maquette(int nid, string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, int nid_fk_format)
         {
-            int id = nid;
-            string Name_maquette = nName_maquette;
-            string Background_image = nBackground_image;
-            string Background_color = nBackground_color;
-            int Height = nHeight ;
-            int Width = nWidth;
+            id = nid;
+            Name_maquette = nName_maquette;
+            Background_image = nBackground_image;
+            Background_color = nBackground_color;
+             Height = nHeight ;
+             Width = nWidth;
+            id_fk_format = nid_fk_format;
         }
         
         public void Add_maquette(string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
@@ -270,7 +304,9 @@ namespace Diploma
             if (reader.HasRows)
             {
                 reader.Read();
-                count_id = Convert.ToInt32(reader.GetValue(0)) + 1;
+              
+                    count_id = Convert.ToInt32(reader.GetValue(0)) + 1;
+                
                 conn.Close();
             }
 
@@ -317,7 +353,8 @@ namespace Diploma
                         Convert.ToString(reader.GetValue(2)),
                         Convert.ToString(reader.GetValue(3)),
                          Convert.ToInt32(reader.GetValue(4)),
-                         Convert.ToInt32(reader.GetValue(5))
+                         Convert.ToInt32(reader.GetValue(5)),
+                         Convert.ToInt32(reader.GetValue(8))
                         );
                 m.Add(maq);
                 k++;
@@ -345,9 +382,36 @@ namespace Diploma
                         Convert.ToString(reader.GetValue(2)),
                         Convert.ToString(reader.GetValue(3)),
                          Convert.ToInt32(reader.GetValue(4)),
-                         Convert.ToInt32(reader.GetValue(5))
+                         Convert.ToInt32(reader.GetValue(5)),
+                         Convert.ToInt32(reader.GetValue(8))
                         );
             }
+            return m;
+        }
+
+        public Maquette Select_maquette_id(int nid, string nconnection_string)
+        {
+            SqlConnection conn = new SqlConnection(nconnection_string);
+
+            conn.Open();
+            string z = "SELECT * FROM Maquette WHERE id =" + nid;
+            SqlCommand command2 = new SqlCommand(z, conn);
+            SqlDataReader reader = command2.ExecuteReader();
+            //int k = 0;
+            //int c = 0;
+            reader.Read();
+
+
+            Maquette m = new Maquette(Convert.ToInt32(reader.GetValue(0)),
+                        Convert.ToString(reader.GetValue(1)),
+                        Convert.ToString(reader.GetValue(2)),
+                        Convert.ToString(reader.GetValue(3)),
+                         Convert.ToInt32(reader.GetValue(4)),
+                         Convert.ToInt32(reader.GetValue(5)),
+                           Convert.ToInt32(reader.GetValue(8))
+                        );
+
+            conn.Close();
             return m;
         }
         public void Update_maquette(int nid, string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
@@ -366,38 +430,38 @@ namespace Diploma
  
     public class Text_blocks
     {
-        int id;
-        string Name_blocks;
-        string Content;
-        string Font_type;
-        string Alignment_text;
-        string Mark_text;
-        int Font_size;
-        int Height;
-        int Width;
-        int X;
-        int Y;
-        int id_maquette_fk;
+        public int id;
+        public string Name_blocks;
+        public string Content;
+        public string Font_type;
+        public string Alignment_text;
+        public string Mark_text;
+        public int Font_size;
+        public int Height;
+        public int Width;
+        public int X;
+        public int Y;
+        public int id_maquette_fk;
 
         public Text_blocks()
         {
 
         }
-        public Text_blocks(int nid, string nName_blocks, string nContent, string nFont_type, string nAlignment_text,
-            string nMark_text, int nFont_size, int nHeight, int nWidth, int nX, int nY, int nid_maquette_fk)
+        public Text_blocks(int nid, int nid_maquette_fk, string nName_blocks, string nContent, string nFont_type, string nAlignment_text,
+            string nMark_text, int nFont_size, int nHeight, int nWidth, int nX, int nY)
         {
-            int id = nid;
-            string Name_blocks = nName_blocks;
-            string Content = nContent ;
-            string Font_type = nFont_type;
-            string Alignment_text = nAlignment_text ;
-            string Mark_text = nMark_text ;
-            int Font_size = nFont_size;
-            int Height = nHeight ;
-            int Width = nWidth ;
-            int X = nX;
-            int Y = nY ;
-            int id_maquette_fk = nid_maquette_fk;
+             id = nid;
+             Name_blocks = nName_blocks;
+             Content = nContent ;
+             Font_type = nFont_type;
+             Alignment_text = nAlignment_text ;
+             Mark_text = nMark_text ;
+             Font_size = nFont_size;
+             Height = nHeight ;
+             Width = nWidth ;
+             X = nX;
+             Y = nY ;
+             id_maquette_fk = nid_maquette_fk;
         }
 
         public void Add_text_blocks(string nName_blocks, string nContent, string nFont_type, string nAlignment_text,  
@@ -424,8 +488,8 @@ namespace Diploma
             conn.Open();
             string z = "INSERT INTO Text_blocks(id, Name_blocks, Content, " +
                 "Font_type, Alignment_text,Mark_text, Font_size, Height,Width, X, Y, id_maquette_fk) " +
-                "VALUES ( "+count_id+", '"+nName_blocks +"', '"+nContent + "', " + nFont_type+ ", '" +nAlignment_text +"'," +
-                " '" + nMark_text+ "', '" +nFont_size + "', " +nHeight + "," + nWidth+ " ," +nX + "," +nY +" )";
+                "VALUES ( "+count_id+", '"+nName_blocks +"', '"+nContent + "', '" + nFont_type+ "', '" +nAlignment_text +"'," +
+                " '" + nMark_text+ "', '" +nFont_size + "', " +nHeight + "," + nWidth+ " ," +nX + "," +nY +","+ nid_maquette_fk+" )";
             SqlCommand command2 = new SqlCommand(z, conn);
             command2.ExecuteNonQuery();
             conn.Close();
@@ -442,13 +506,13 @@ namespace Diploma
             conn.Close();
         }
 
-        public List<Text_blocks> Select_text_blocks(string nconnection_string)
+        public List<Text_blocks> Select_text_blocks(string nconnection_string, int Maquette_id)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
             List<Text_blocks> m = new List<Text_blocks>();
             conn.Open();
-            string s = "SELECT * FROM Text_blocks";
+            string s = "SELECT * FROM Text_blocks WHERE id_maquette_fk = " + Maquette_id;
             SqlCommand command = new SqlCommand(s, conn);
             SqlDataReader reader = command.ExecuteReader();
             int k = 0;
@@ -457,12 +521,12 @@ namespace Diploma
             {
 
                 Text_blocks maq = new Text_blocks(Convert.ToInt32(reader.GetValue(0)),
-                        Convert.ToString(reader.GetValue(1)),
+                        Convert.ToInt32(reader.GetValue(1)),
                         Convert.ToString(reader.GetValue(2)),
                         Convert.ToString(reader.GetValue(3)),
                         Convert.ToString(reader.GetValue(4)),
                          Convert.ToString(reader.GetValue(5)),
-                         Convert.ToInt32(reader.GetValue(6)),
+                         Convert.ToString(reader.GetValue(6)),
                          Convert.ToInt32(reader.GetValue(7)),
                          Convert.ToInt32(reader.GetValue(8)),
                          Convert.ToInt32(reader.GetValue(9)),
@@ -489,12 +553,12 @@ namespace Diploma
             {
 
                      m = new Text_blocks(Convert.ToInt32(reader.GetValue(0)),
-                        Convert.ToString(reader.GetValue(1)),
+                        Convert.ToInt32(reader.GetValue(1)),
                         Convert.ToString(reader.GetValue(2)),
                         Convert.ToString(reader.GetValue(3)),
                         Convert.ToString(reader.GetValue(4)),
                          Convert.ToString(reader.GetValue(5)),
-                         Convert.ToInt32(reader.GetValue(6)),
+                         Convert.ToString(reader.GetValue(6)),
                          Convert.ToInt32(reader.GetValue(7)),
                          Convert.ToInt32(reader.GetValue(8)),
                          Convert.ToInt32(reader.GetValue(9)),
@@ -521,35 +585,66 @@ namespace Diploma
 
         }
 
+        public Text_blocks Select_text_blocks_id(int nid, string nconnection_string)
+        {
+            SqlConnection conn = new SqlConnection(nconnection_string);
+
+            conn.Open();
+            string z = "SELECT * FROM Text_blocks WHERE id =" + nid;
+            SqlCommand command2 = new SqlCommand(z, conn);
+            SqlDataReader reader = command2.ExecuteReader();
+            //int k = 0;
+            //int c = 0;
+            reader.Read();
+
+
+            Text_blocks m = new Text_blocks(Convert.ToInt32(reader.GetValue(0)),
+                        Convert.ToInt32(reader.GetValue(1)),
+                        Convert.ToString(reader.GetValue(2)),
+                        Convert.ToString(reader.GetValue(3)),
+                        Convert.ToString(reader.GetValue(4)),
+                         Convert.ToString(reader.GetValue(5)),
+                         Convert.ToString(reader.GetValue(6)),
+                         Convert.ToInt32(reader.GetValue(7)),
+                         Convert.ToInt32(reader.GetValue(8)),
+                         Convert.ToInt32(reader.GetValue(9)),
+                         Convert.ToInt32(reader.GetValue(10)),
+                         Convert.ToInt32(reader.GetValue(11))
+                        );
+
+            conn.Close();
+            return m;
+        }
+
     }
 
     public class Image_blocks
     {
-        int id;
-        string Name_blocks;
-        string Image_content;
-        int Height;
-        int Width;
-        int X;
-        int Y;
-        int id_maquette_fk;
+        public int id;
+        public string Name_blocks;
+        public string Image_content;
+        public int Height;
+        public int Width;
+        public int X;
+        public int Y;
+        public int id_maquette_fk;
 
         public Image_blocks()
         {
 
         }
-        public Image_blocks(int nid, string nName_blocks, string nImage_content,  int nHeight, int nWidth, int nX, int nY, int nid_maquette_fk)
+        public Image_blocks(int nid, int nid_maquette_fk, string nName_blocks, string nImage_content,  int nHeight, int nWidth, int nX, int nY)
         {
-            int id = nid;
-            string Name_blocks = nName_blocks;
-            string Image_content = nImage_content;
-            int Height = nHeight;
-            int Width = nWidth;
-            int X = nX;
-            int Y = nY;
-            int id_maquette_fk = nid_maquette_fk;
+             id = nid;
+             Name_blocks = nName_blocks;
+             Image_content = nImage_content;
+             Height = nHeight;
+             Width = nWidth;
+            X = nX;
+             Y = nY;
+             id_maquette_fk = nid_maquette_fk;
         }
-        public void Add_image_blocks(string nName_blocks, string nImage_content, int nHeight, int nWidth, int nX, int nY, string nconnection_string)
+        public void Add_image_blocks(string nName_blocks, string nImage_content, int nHeight, int nWidth, int nX, int nY, int nid_maquette_fk, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
             conn.Open();
@@ -570,9 +665,9 @@ namespace Diploma
                 count_id++;
             }
             conn.Open();
-            string z = "INSERT INTO Image_blocks(id, Name_blocks, Image_content, Height, Width, X, Y) " +
+            string z = "INSERT INTO Image_blocks(id, Name_blocks, Image_content, Height, Width, X, Y, id_maquette_fk) " +
                 "VALUES ( " + count_id + ", '" + nName_blocks + "', '" + nImage_content + "', " +
-                " " + nHeight + "," + nWidth + "," + nX + "," + nY + " )";
+                " " + nHeight + "," + nWidth + "," + nX + "," + nY + " ,"+ nid_maquette_fk + ")";
             SqlCommand command2 = new SqlCommand(z, conn);
             command2.ExecuteNonQuery();
             conn.Close();
@@ -589,13 +684,13 @@ namespace Diploma
             conn.Close();
         }
 
-        public List<Image_blocks> Select_image_blocks(string nconnection_string)
+        public List<Image_blocks> Select_image_blocks(string nconnection_string, int Maquette_id)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
             List<Image_blocks> m = new List<Image_blocks>();
             conn.Open();
-            string s = "SELECT * FROM Image_blocks";
+            string s = "SELECT * FROM Image_blocks WHERE id_maquette_fk = " + Maquette_id;
             SqlCommand command = new SqlCommand(s, conn);
             SqlDataReader reader = command.ExecuteReader();
             int k = 0;
@@ -604,9 +699,9 @@ namespace Diploma
             {
 
                 Image_blocks maq = new Image_blocks(Convert.ToInt32(reader.GetValue(0)),
-                        Convert.ToString(reader.GetValue(1)),
+                        Convert.ToInt32(reader.GetValue(1)),
                         Convert.ToString(reader.GetValue(2)),
-                         Convert.ToInt32(reader.GetValue(3)),
+                         Convert.ToString(reader.GetValue(3)),
                          Convert.ToInt32(reader.GetValue(4)),
                          Convert.ToInt32(reader.GetValue(5)),
                          Convert.ToInt32(reader.GetValue(6)),
@@ -631,9 +726,9 @@ namespace Diploma
             {
 
                 m = new Image_blocks(Convert.ToInt32(reader.GetValue(0)),
-                        Convert.ToString(reader.GetValue(1)),
+                        Convert.ToInt32(reader.GetValue(1)),
                         Convert.ToString(reader.GetValue(2)),
-                         Convert.ToInt32(reader.GetValue(3)),
+                         Convert.ToString(reader.GetValue(3)),
                          Convert.ToInt32(reader.GetValue(4)),
                          Convert.ToInt32(reader.GetValue(5)),
                          Convert.ToInt32(reader.GetValue(6)),
@@ -643,6 +738,7 @@ namespace Diploma
            
             return m;
         }
+       
         public void Update_image_blocks(int nid, string nName_blocks, string nImage_content, int nHeight, int nWidth, int nX, int nY, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
@@ -653,6 +749,33 @@ namespace Diploma
             SqlCommand command2 = new SqlCommand(z, conn);
             command2.ExecuteNonQuery();
             conn.Close();
+        }
+
+        public Image_blocks Select_image_blocks_id(int nid, string nconnection_string)
+        {
+            SqlConnection conn = new SqlConnection(nconnection_string);
+
+            conn.Open();
+            string z = "SELECT * FROM Image_blocks WHERE id =" + nid;
+            SqlCommand command2 = new SqlCommand(z, conn);
+            SqlDataReader reader = command2.ExecuteReader();
+            //int k = 0;
+            //int c = 0;
+            reader.Read();
+
+
+            Image_blocks m = new Image_blocks(Convert.ToInt32(reader.GetValue(0)),
+                        Convert.ToInt32(reader.GetValue(1)),
+                        Convert.ToString(reader.GetValue(2)),
+                         Convert.ToString(reader.GetValue(3)),
+                         Convert.ToInt32(reader.GetValue(4)),
+                         Convert.ToInt32(reader.GetValue(5)),
+                         Convert.ToInt32(reader.GetValue(6)),
+                         Convert.ToInt32(reader.GetValue(7))
+                        );
+
+            conn.Close();
+            return m;
         }
     }
 }

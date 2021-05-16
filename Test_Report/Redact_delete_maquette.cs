@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace Test_Report
 {
-    public partial class Connect_form : Form
+    public partial class Redact_delete_maquette : Form
     {
-        public Connect_form()
+        public Redact_delete_maquette()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button_OK_Click(object sender, EventArgs e)
         {
 
         }

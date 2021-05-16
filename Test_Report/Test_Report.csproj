@@ -72,6 +72,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Add_image_blоcks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Add_image_blоcks.Designer.cs">
+      <DependentUpon>Add_image_blоcks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="add_text_blocks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="add_text_blocks.Designer.cs">
+      <DependentUpon>add_text_blocks.cs</DependentUpon>
+    </Compile>
     <Compile Include="Connect_form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +116,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Redact_delete_format.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Redact_delete_format.Designer.cs">
+      <DependentUpon>Redact_delete_format.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Redact_delete_maquette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Redact_delete_maquette.Designer.cs">
+      <DependentUpon>Redact_delete_maquette.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Select_maquette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Select_maquette.Designer.cs">
+      <DependentUpon>Select_maquette.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Add_image_blоcks.resx">
+      <DependentUpon>Add_image_blоcks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="add_text_blocks.resx">
+      <DependentUpon>add_text_blocks.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Connect_form.resx">
       <DependentUpon>Connect_form.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +164,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Redact_delete_format.resx">
+      <DependentUpon>Redact_delete_format.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Redact_delete_maquette.resx">
+      <DependentUpon>Redact_delete_maquette.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Select_maquette.resx">
+      <DependentUpon>Select_maquette.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

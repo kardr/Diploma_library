@@ -162,6 +162,7 @@ namespace Test_Report
             this.button2.TabIndex = 14;
             this.button2.Text = "Вперёд";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -171,8 +172,9 @@ namespace Test_Report
             this.button1.TabIndex = 13;
             this.button1.Text = "Назад";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // Form_add_maquette
+            // Form_maquette_gallery
             // 
             this.AcceptButton = this.button4;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -192,8 +194,9 @@ namespace Test_Report
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Name = "Form_add_maquette";
-            this.Text = "Form_add_maquette";
+            this.Name = "Form_maquette_gallery";
+            this.Text = "Галерея фонов";
+            this.Load += new System.EventHandler(this.Form_maquette_gallery_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
