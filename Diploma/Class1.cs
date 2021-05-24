@@ -291,7 +291,7 @@ namespace Diploma
             id_fk_format = nid_fk_format;
         }
         
-        public void Add_maquette(string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
+        public void Add_maquette(string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, int nid, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
             conn.Open();
@@ -314,9 +314,9 @@ namespace Diploma
                 count_id++;
             }
             conn.Open();
-            string z = "INSERT INTO Maquette(id, Name_maquette, Background_image, Background_color, Height, Width) " +
+            string z = "INSERT INTO Maquette(id, Name_maquette, Background_image, Background_color, Height, Width, id_fk_format) " +
                 "VALUES ( " + count_id + ", '" + nName_maquette + "', '" + nBackground_image + "', " +
-                "'" + nBackground_color + "', " + nHeight + "," + nWidth + " )";
+                "'" + nBackground_color + "', " + nHeight + "," + nWidth + " ,"+nid+")";
             SqlCommand command2 = new SqlCommand(z, conn);
             command2.ExecuteNonQuery();
             conn.Close();

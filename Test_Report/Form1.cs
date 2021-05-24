@@ -118,7 +118,8 @@ namespace Test_Report
             {
                 File.Copy(add.label2.Text, "Maquette//" + Path.GetFileName(add.label2.Text));
                 Diploma.Maquette ma = new Diploma.Maquette();
-                ma.Add_maquette(add.textBox1.Text, Path.GetFileName(add.label2.Text), add.pictureBox2.BackColor.ToString(), Convert.ToInt32(add.numericUpDown1.Value), Convert.ToInt32(add.numericUpDown2.Value), Program.connection_str);
+                int id = (add.comboBox1.Items[add.comboBox1.SelectedIndex] as Diploma.Format).id;
+                ma.Add_maquette(add.textBox1.Text, Path.GetFileName(add.label2.Text), add.pictureBox2.BackColor.ToString(), Convert.ToInt32(add.numericUpDown1.Value), Convert.ToInt32(add.numericUpDown2.Value),id, Program.connection_str);
 
             }
         }
