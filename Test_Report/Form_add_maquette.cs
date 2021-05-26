@@ -28,16 +28,9 @@ namespace Test_Report
 
         private void Form_add_maquette_Load(object sender, EventArgs e)
         {
-            pictureBox2.BackColor = Color.White;
-            comboBox1.DataSource = null;
-            Diploma.Format f = new Diploma.Format();
-            List<Diploma.Format> n = f.Select_Formats(Program.connection_str);
-
-
-            // comboBox1.Items.Add(new Diploma.Format(n[0]));
-            //  comboBox1.Items.Add(new Diploma.Format(n[1]));
-            comboBox1.DataSource = n;
-            comboBox1.SelectedIndex = 0;
+           // pictureBox2.BackColor = Color.White;
+           // comboBox1.DataSource = null;
+           
 
         }
 

@@ -42,10 +42,13 @@ namespace Test_Report
             this.выборФонаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавлениеФонаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавтьГрафическийБлокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выборМакетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_add1 = new System.Windows.Forms.Button();
             this.button_delete1 = new System.Windows.Forms.Button();
             this.button_delete2 = new System.Windows.Forms.Button();
@@ -56,10 +59,9 @@ namespace Test_Report
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button_update1 = new System.Windows.Forms.Button();
+            this.button_update2 = new System.Windows.Forms.Button();
+            this.редактированиеМакетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,6 +84,7 @@ namespace Test_Report
             // 
             // comboBox1
             // 
+            this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(16, 22);
             this.comboBox1.Name = "comboBox1";
@@ -95,8 +98,7 @@ namespace Test_Report
             this.работаСФорматамиToolStripMenuItem,
             this.работаСоСтрокойПодключенияToolStripMenuItem,
             this.работаСТекстомToolStripMenuItem,
-            this.работаСИзображениемToolStripMenuItem,
-            this.выборМакетаToolStripMenuItem});
+            this.работаСИзображениемToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(826, 24);
@@ -154,7 +156,8 @@ namespace Test_Report
             this.работаСИзображениемToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выборФонаToolStripMenuItem,
             this.добавлениеФонаToolStripMenuItem,
-            this.добавтьГрафическийБлокToolStripMenuItem});
+            this.добавтьГрафическийБлокToolStripMenuItem,
+            this.редактированиеМакетаToolStripMenuItem});
             this.работаСИзображениемToolStripMenuItem.Name = "работаСИзображениемToolStripMenuItem";
             this.работаСИзображениемToolStripMenuItem.Size = new System.Drawing.Size(152, 20);
             this.работаСИзображениемToolStripMenuItem.Text = "Работа с изображением";
@@ -162,15 +165,15 @@ namespace Test_Report
             // выборФонаToolStripMenuItem
             // 
             this.выборФонаToolStripMenuItem.Name = "выборФонаToolStripMenuItem";
-            this.выборФонаToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.выборФонаToolStripMenuItem.Text = "Выбор фона";
+            this.выборФонаToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.выборФонаToolStripMenuItem.Text = "Выбор макета";
             this.выборФонаToolStripMenuItem.Click += new System.EventHandler(this.выборФонаToolStripMenuItem_Click);
             // 
             // добавлениеФонаToolStripMenuItem
             // 
             this.добавлениеФонаToolStripMenuItem.Name = "добавлениеФонаToolStripMenuItem";
-            this.добавлениеФонаToolStripMenuItem.Size = new System.Drawing.Size(225, 22);
-            this.добавлениеФонаToolStripMenuItem.Text = "Добавление фона";
+            this.добавлениеФонаToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.добавлениеФонаToolStripMenuItem.Text = "Добавление макета";
             this.добавлениеФонаToolStripMenuItem.Click += new System.EventHandler(this.добавлениеФонаToolStripMenuItem_Click);
             // 
             // добавтьГрафическийБлокToolStripMenuItem
@@ -179,13 +182,6 @@ namespace Test_Report
             this.добавтьГрафическийБлокToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
             this.добавтьГрафическийБлокToolStripMenuItem.Text = "Добавить графический блок";
             this.добавтьГрафическийБлокToolStripMenuItem.Click += new System.EventHandler(this.добавтьГрафическийБлокToolStripMenuItem_Click);
-            // 
-            // выборМакетаToolStripMenuItem
-            // 
-            this.выборМакетаToolStripMenuItem.Name = "выборМакетаToolStripMenuItem";
-            this.выборМакетаToolStripMenuItem.Size = new System.Drawing.Size(98, 20);
-            this.выборМакетаToolStripMenuItem.Text = "Выбор макета";
-            this.выборМакетаToolStripMenuItem.Click += new System.EventHandler(this.выборМакетаToolStripMenuItem_Click);
             // 
             // pictureBox1
             // 
@@ -210,6 +206,17 @@ namespace Test_Report
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "id";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Наименование";
+            this.Column2.Name = "Column2";
+            // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -222,11 +229,22 @@ namespace Test_Report
             this.dataGridView2.Size = new System.Drawing.Size(148, 197);
             this.dataGridView2.TabIndex = 9;
             // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "id";
+            this.Column3.Name = "Column3";
+            this.Column3.Visible = false;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "Наименование";
+            this.Column4.Name = "Column4";
+            // 
             // button_add1
             // 
             this.button_add1.Location = new System.Drawing.Point(8, 230);
             this.button_add1.Name = "button_add1";
-            this.button_add1.Size = new System.Drawing.Size(75, 23);
+            this.button_add1.Size = new System.Drawing.Size(63, 23);
             this.button_add1.TabIndex = 10;
             this.button_add1.Text = "Добавить";
             this.button_add1.UseVisualStyleBackColor = true;
@@ -234,12 +252,13 @@ namespace Test_Report
             // 
             // button_delete1
             // 
-            this.button_delete1.Location = new System.Drawing.Point(111, 230);
+            this.button_delete1.Location = new System.Drawing.Point(128, 230);
             this.button_delete1.Name = "button_delete1";
-            this.button_delete1.Size = new System.Drawing.Size(75, 23);
+            this.button_delete1.Size = new System.Drawing.Size(58, 23);
             this.button_delete1.TabIndex = 11;
             this.button_delete1.Text = "Удалить";
             this.button_delete1.UseVisualStyleBackColor = true;
+            this.button_delete1.Click += new System.EventHandler(this.button_delete1_Click);
             // 
             // button_delete2
             // 
@@ -249,6 +268,7 @@ namespace Test_Report
             this.button_delete2.TabIndex = 13;
             this.button_delete2.Text = "Удалить";
             this.button_delete2.UseVisualStyleBackColor = true;
+            this.button_delete2.Click += new System.EventHandler(this.button_delete2_Click);
             // 
             // button_add2
             // 
@@ -258,6 +278,7 @@ namespace Test_Report
             this.button_add2.TabIndex = 12;
             this.button_add2.Text = "Добавить";
             this.button_add2.UseVisualStyleBackColor = true;
+            this.button_add2.Click += new System.EventHandler(this.button_add2_Click);
             // 
             // label1
             // 
@@ -303,6 +324,7 @@ namespace Test_Report
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.button_update1);
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.button_add1);
             this.groupBox3.Controls.Add(this.button_delete1);
@@ -316,6 +338,7 @@ namespace Test_Report
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button_update2);
             this.groupBox4.Controls.Add(this.dataGridView2);
             this.groupBox4.Controls.Add(this.button_add2);
             this.groupBox4.Controls.Add(this.button_delete2);
@@ -327,27 +350,32 @@ namespace Test_Report
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Графические блоки";
             // 
-            // Column3
+            // button_update1
             // 
-            this.Column3.HeaderText = "id";
-            this.Column3.Name = "Column3";
-            this.Column3.Visible = false;
+            this.button_update1.Location = new System.Drawing.Point(77, 230);
+            this.button_update1.Name = "button_update1";
+            this.button_update1.Size = new System.Drawing.Size(45, 23);
+            this.button_update1.TabIndex = 12;
+            this.button_update1.Text = "Редактировать";
+            this.button_update1.UseVisualStyleBackColor = true;
+            this.button_update1.Click += new System.EventHandler(this.button_update1_Click);
             // 
-            // Column4
+            // button_update2
             // 
-            this.Column4.HeaderText = "Наименование";
-            this.Column4.Name = "Column4";
+            this.button_update2.Location = new System.Drawing.Point(71, 230);
+            this.button_update2.Name = "button_update2";
+            this.button_update2.Size = new System.Drawing.Size(45, 23);
+            this.button_update2.TabIndex = 14;
+            this.button_update2.Text = "Редактировать";
+            this.button_update2.UseVisualStyleBackColor = true;
+            this.button_update2.Click += new System.EventHandler(this.button_update2_Click);
             // 
-            // Column1
+            // редактированиеМакетаToolStripMenuItem
             // 
-            this.Column1.HeaderText = "id";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Наименование";
-            this.Column2.Name = "Column2";
+            this.редактированиеМакетаToolStripMenuItem.Name = "редактированиеМакетаToolStripMenuItem";
+            this.редактированиеМакетаToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.редактированиеМакетаToolStripMenuItem.Text = "Редактирование макета";
+            this.редактированиеМакетаToolStripMenuItem.Click += new System.EventHandler(this.редактированиеМакетаToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -402,7 +430,6 @@ namespace Test_Report
         private System.Windows.Forms.Button button_add2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem редактроватьФорматToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem выборМакетаToolStripMenuItem;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -412,6 +439,9 @@ namespace Test_Report
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button button_update1;
+        private System.Windows.Forms.Button button_update2;
+        private System.Windows.Forms.ToolStripMenuItem редактированиеМакетаToolStripMenuItem;
     }
 }
 

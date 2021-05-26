@@ -251,6 +251,6 @@ namespace Test_Report
         public System.Windows.Forms.Label label2;
         public System.Windows.Forms.Button add_file_button;
         public System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        public System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

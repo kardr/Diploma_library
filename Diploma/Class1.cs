@@ -413,13 +413,13 @@ namespace Diploma
             conn.Close();
             return m;
         }
-        public void Update_maquette(int nid, string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, string nconnection_string)
+        public void Update_maquette(int nid, string nName_maquette, string nBackground_image, string nBackground_color, int nHeight, int nWidth, int nid_fk_format, string nconnection_string)
         {
             SqlConnection conn = new SqlConnection(nconnection_string);
 
             conn.Open();
             string z = "UPDATE Maquette SET Name_maquette = '" + nName_maquette + "', Background_image = '" + nBackground_image + "', " +
-                "Background_color = '" + nBackground_color + "', Height = " + nHeight + ", Width = " + nWidth + " WHERE id = " + nid;
+                "Background_color = '" + nBackground_color + "', Height = " + nHeight + ", Width = " + nWidth + ", id_fk_format="+ nid_fk_format + " WHERE id = " + nid;
             SqlCommand command2 = new SqlCommand(z, conn);
             command2.ExecuteNonQuery();
             conn.Close();
@@ -446,8 +446,8 @@ namespace Diploma
         {
 
         }
-        public Text_blocks(int nid, int nid_maquette_fk, string nName_blocks, string nContent, string nFont_type, string nAlignment_text,
-            string nMark_text, int nFont_size, int nHeight, int nWidth, int nX, int nY)
+        public Text_blocks(int nid, int nid_maquette_fk, string nName_blocks, string nContent, int nFont_size, string nFont_type, string nAlignment_text,
+            string nMark_text,  int nHeight, int nWidth, int nX, int nY)
         {
              id = nid;
              Name_blocks = nName_blocks;
@@ -523,10 +523,10 @@ namespace Diploma
                         Convert.ToInt32(reader.GetValue(1)),
                         Convert.ToString(reader.GetValue(2)),
                         Convert.ToString(reader.GetValue(3)),
-                        Convert.ToString(reader.GetValue(4)),
+                        Convert.ToInt32(reader.GetValue(4)),
                          Convert.ToString(reader.GetValue(5)),
                          Convert.ToString(reader.GetValue(6)),
-                         Convert.ToInt32(reader.GetValue(7)),
+                         Convert.ToString(reader.GetValue(7)),
                          Convert.ToInt32(reader.GetValue(8)),
                          Convert.ToInt32(reader.GetValue(9)),
                          Convert.ToInt32(reader.GetValue(10)),
@@ -555,10 +555,10 @@ namespace Diploma
                         Convert.ToInt32(reader.GetValue(1)),
                         Convert.ToString(reader.GetValue(2)),
                         Convert.ToString(reader.GetValue(3)),
-                        Convert.ToString(reader.GetValue(4)),
+                        Convert.ToInt32(reader.GetValue(4)),
                          Convert.ToString(reader.GetValue(5)),
                          Convert.ToString(reader.GetValue(6)),
-                         Convert.ToInt32(reader.GetValue(7)),
+                         Convert.ToString(reader.GetValue(7)),
                          Convert.ToInt32(reader.GetValue(8)),
                          Convert.ToInt32(reader.GetValue(9)),
                          Convert.ToInt32(reader.GetValue(10)),
@@ -601,14 +601,14 @@ namespace Diploma
                         Convert.ToInt32(reader.GetValue(1)),
                         Convert.ToString(reader.GetValue(2)),
                         Convert.ToString(reader.GetValue(3)),
-                        Convert.ToString(reader.GetValue(4)),
+                        Convert.ToInt32(reader.GetValue(4)),
                          Convert.ToString(reader.GetValue(5)),
                          Convert.ToString(reader.GetValue(6)),
-                         Convert.ToInt32(reader.GetValue(7)),
-                         Convert.ToInt32(reader.GetValue(8)),
-                         Convert.ToInt32(reader.GetValue(9)),
+                         Convert.ToString(reader.GetValue(7)),
                          Convert.ToInt32(reader.GetValue(10)),
-                         Convert.ToInt32(reader.GetValue(11))
+                         Convert.ToInt32(reader.GetValue(11)),
+                          Convert.ToInt32(reader.GetValue(8)),
+                         Convert.ToInt32(reader.GetValue(9))
                         );
 
             conn.Close();
