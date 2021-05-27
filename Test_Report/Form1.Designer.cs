@@ -42,6 +42,7 @@ namespace Test_Report
             this.выборФонаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавлениеФонаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавтьГрафическийБлокToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.редактированиеМакетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -58,10 +59,9 @@ namespace Test_Report
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_update1 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.button_update2 = new System.Windows.Forms.Button();
-            this.редактированиеМакетаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -74,7 +74,7 @@ namespace Test_Report
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(31, 47);
+            this.button1.Location = new System.Drawing.Point(631, 423);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(89, 35);
             this.button1.TabIndex = 0;
@@ -86,7 +86,7 @@ namespace Test_Report
             // 
             this.comboBox1.Enabled = false;
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(16, 22);
+            this.comboBox1.Location = new System.Drawing.Point(16, 38);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);
             this.comboBox1.TabIndex = 5;
@@ -101,7 +101,7 @@ namespace Test_Report
             this.работаСИзображениемToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(826, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(875, 24);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -183,12 +183,19 @@ namespace Test_Report
             this.добавтьГрафическийБлокToolStripMenuItem.Text = "Добавить графический блок";
             this.добавтьГрафическийБлокToolStripMenuItem.Click += new System.EventHandler(this.добавтьГрафическийБлокToolStripMenuItem_Click);
             // 
+            // редактированиеМакетаToolStripMenuItem
+            // 
+            this.редактированиеМакетаToolStripMenuItem.Name = "редактированиеМакетаToolStripMenuItem";
+            this.редактированиеМакетаToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
+            this.редактированиеМакетаToolStripMenuItem.Text = "Редактирование макета";
+            this.редактированиеМакетаToolStripMenuItem.Click += new System.EventHandler(this.редактированиеМакетаToolStripMenuItem_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(509, 54);
+            this.pictureBox1.Location = new System.Drawing.Point(528, 45);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(273, 362);
+            this.pictureBox1.Size = new System.Drawing.Size(285, 371);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
@@ -242,9 +249,9 @@ namespace Test_Report
             // 
             // button_add1
             // 
-            this.button_add1.Location = new System.Drawing.Point(8, 230);
+            this.button_add1.Location = new System.Drawing.Point(5, 230);
             this.button_add1.Name = "button_add1";
-            this.button_add1.Size = new System.Drawing.Size(63, 23);
+            this.button_add1.Size = new System.Drawing.Size(93, 23);
             this.button_add1.TabIndex = 10;
             this.button_add1.Text = "Добавить";
             this.button_add1.UseVisualStyleBackColor = true;
@@ -252,9 +259,9 @@ namespace Test_Report
             // 
             // button_delete1
             // 
-            this.button_delete1.Location = new System.Drawing.Point(128, 230);
+            this.button_delete1.Location = new System.Drawing.Point(66, 260);
             this.button_delete1.Name = "button_delete1";
-            this.button_delete1.Size = new System.Drawing.Size(58, 23);
+            this.button_delete1.Size = new System.Drawing.Size(77, 23);
             this.button_delete1.TabIndex = 11;
             this.button_delete1.Text = "Удалить";
             this.button_delete1.UseVisualStyleBackColor = true;
@@ -262,9 +269,9 @@ namespace Test_Report
             // 
             // button_delete2
             // 
-            this.button_delete2.Location = new System.Drawing.Point(122, 230);
+            this.button_delete2.Location = new System.Drawing.Point(64, 260);
             this.button_delete2.Name = "button_delete2";
-            this.button_delete2.Size = new System.Drawing.Size(75, 23);
+            this.button_delete2.Size = new System.Drawing.Size(77, 23);
             this.button_delete2.TabIndex = 13;
             this.button_delete2.Text = "Удалить";
             this.button_delete2.UseVisualStyleBackColor = true;
@@ -272,9 +279,9 @@ namespace Test_Report
             // 
             // button_add2
             // 
-            this.button_add2.Location = new System.Drawing.Point(6, 230);
+            this.button_add2.Location = new System.Drawing.Point(5, 231);
             this.button_add2.Name = "button_add2";
-            this.button_add2.Size = new System.Drawing.Size(75, 23);
+            this.button_add2.Size = new System.Drawing.Size(93, 23);
             this.button_add2.TabIndex = 12;
             this.button_add2.Text = "Добавить";
             this.button_add2.UseVisualStyleBackColor = true;
@@ -300,7 +307,6 @@ namespace Test_Report
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -309,7 +315,7 @@ namespace Test_Report
             this.groupBox1.Size = new System.Drawing.Size(156, 93);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Выбрать формат";
+            this.groupBox1.Text = "Выбранный формат";
             // 
             // groupBox2
             // 
@@ -331,10 +337,20 @@ namespace Test_Report
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox3.Location = new System.Drawing.Point(18, 163);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(203, 259);
+            this.groupBox3.Size = new System.Drawing.Size(203, 289);
             this.groupBox3.TabIndex = 18;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Текстовые блоки";
+            // 
+            // button_update1
+            // 
+            this.button_update1.Location = new System.Drawing.Point(104, 230);
+            this.button_update1.Name = "button_update1";
+            this.button_update1.Size = new System.Drawing.Size(93, 23);
+            this.button_update1.TabIndex = 12;
+            this.button_update1.Text = "Редактировать";
+            this.button_update1.UseVisualStyleBackColor = true;
+            this.button_update1.Click += new System.EventHandler(this.button_update1_Click);
             // 
             // groupBox4
             // 
@@ -345,43 +361,27 @@ namespace Test_Report
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox4.Location = new System.Drawing.Point(247, 163);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(203, 259);
+            this.groupBox4.Size = new System.Drawing.Size(203, 289);
             this.groupBox4.TabIndex = 19;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Графические блоки";
             // 
-            // button_update1
-            // 
-            this.button_update1.Location = new System.Drawing.Point(77, 230);
-            this.button_update1.Name = "button_update1";
-            this.button_update1.Size = new System.Drawing.Size(45, 23);
-            this.button_update1.TabIndex = 12;
-            this.button_update1.Text = "Редактировать";
-            this.button_update1.UseVisualStyleBackColor = true;
-            this.button_update1.Click += new System.EventHandler(this.button_update1_Click);
-            // 
             // button_update2
             // 
-            this.button_update2.Location = new System.Drawing.Point(71, 230);
+            this.button_update2.Location = new System.Drawing.Point(104, 230);
             this.button_update2.Name = "button_update2";
-            this.button_update2.Size = new System.Drawing.Size(45, 23);
+            this.button_update2.Size = new System.Drawing.Size(93, 23);
             this.button_update2.TabIndex = 14;
             this.button_update2.Text = "Редактировать";
             this.button_update2.UseVisualStyleBackColor = true;
             this.button_update2.Click += new System.EventHandler(this.button_update2_Click);
             // 
-            // редактированиеМакетаToolStripMenuItem
-            // 
-            this.редактированиеМакетаToolStripMenuItem.Name = "редактированиеМакетаToolStripMenuItem";
-            this.редактированиеМакетаToolStripMenuItem.Size = new System.Drawing.Size(232, 22);
-            this.редактированиеМакетаToolStripMenuItem.Text = "Редактирование макета";
-            this.редактированиеМакетаToolStripMenuItem.Click += new System.EventHandler(this.редактированиеМакетаToolStripMenuItem_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(826, 454);
+            this.ClientSize = new System.Drawing.Size(875, 488);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
@@ -390,6 +390,7 @@ namespace Test_Report
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

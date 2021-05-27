@@ -17,9 +17,11 @@ namespace Test_Report
         int id_pic = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-            Diploma.Diploma di = new Diploma.Diploma(Program.connection_str);
+            /*Diploma.Diploma di = new Diploma.Diploma(Program.connection_str);
             Diploma.Format n = comboBox1.Items[comboBox1.SelectedIndex] as Diploma.Format;
-            Report report = di.Test_Report("yfhfhjfhjdfgd", n.Height, n.Width);
+            Report report = di.Test_Report("yfhfhjfhjdfgd", n.Height, n.Width);*/
+            Diploma.Diploma di = new Diploma.Diploma(Program.connection_str);
+            Report report = di.Create_maquette_fasrreport(Program.Maquette_id);
             report.Show();
 
 
@@ -47,6 +49,31 @@ namespace Test_Report
         private void Form1_Load(object sender, EventArgs e)
         {
             Load_format();
+            StreamReader f = new StreamReader("Maquette_id.txt");
+            int a = Convert.ToInt32(f.ReadLine());
+            Program.Maquette_id = a;
+            // Diploma.Maquette l = new Diploma.Maquette();
+            // Program.Maquette_name = f.dataGridView1[1, tt].Value.ToString();
+
+
+            Diploma.Maquette m = new Diploma.Maquette();
+            m = m.Select_maquette_id(Program.Maquette_id, Program.connection_str);
+            label2.Text = m.Name_maquette;
+            pictureBox1.Load("Maquette//" + m.Background_image);
+            int k = 0;
+            for (int i = 0; i < comboBox1.Items.Count; i++)
+            {
+                Diploma.Format fff = comboBox1.Items[i] as Diploma.Format;
+                if (fff.id == m.id_fk_format)
+                {
+                    k = i;
+                    break;
+                }
+            }
+            Load_image_blocks();
+            Load_text_blocks();
+            comboBox1.SelectedIndex = k;
+
 
             if (Program.Maquette_id == 0)
             {
@@ -54,7 +81,7 @@ namespace Test_Report
             }
             else
             {
-                label2.Text = Program.Maquette_id.ToString();
+                label2.Text = m.Name_maquette;
             }
 
 
@@ -109,9 +136,18 @@ namespace Test_Report
         private void добавлениеФонаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form_add_maquette add = new Form_add_maquette();
+            add.comboBox1.DataSource = null;
+            Diploma.Format fd = new Diploma.Format();
+            List<Diploma.Format> n = fd.Select_Formats(Program.connection_str);
+
+
+            // comboBox1.Items.Add(new Diploma.Format(n[0]));
+            //  comboBox1.Items.Add(new Diploma.Format(n[1]));
+            add.comboBox1.DataSource = n;
+            add.comboBox1.SelectedIndex = 0;
             if (add.ShowDialog() == DialogResult.OK)
             {
-                File.Copy(add.label2.Text, "Maquette//" + Path.GetFileName(add.label2.Text));
+                File.Copy(add.label2.Text, "Maquette//" + Path.GetFileName(add.label2.Text), true);
                 Diploma.Maquette ma = new Diploma.Maquette();
                 int id = (add.comboBox1.Items[add.comboBox1.SelectedIndex] as Diploma.Format).id;
                 ma.Add_maquette(add.textBox1.Text, Path.GetFileName(add.label2.Text), add.pictureBox2.BackColor.ToString(), Convert.ToInt32(add.numericUpDown1.Value), Convert.ToInt32(add.numericUpDown2.Value),id, Program.connection_str);
@@ -179,8 +215,15 @@ namespace Test_Report
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            add_text_blocks();
+            if (Program.Maquette_id == 0)
+            {
+                MessageBox.Show("Макет не выбран!");
+            }
+            else { 
 
+                add_text_blocks();
+                MessageBox.Show("Успешно добавлен!");
+            }
         }
 
         private void редактроватьФорматToolStripMenuItem_Click(object sender, EventArgs e)
@@ -208,7 +251,17 @@ namespace Test_Report
         }
         private void добавтьТекстовыйБлокToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            add_text_blocks();
+
+            if (Program.Maquette_id == 0)
+            {
+                MessageBox.Show("Макет не выбран!");
+            }
+            else
+            {
+
+                add_text_blocks();
+                MessageBox.Show("Успешно добавлен!");
+            }
         }
 
         public void add_image_blocks()
@@ -227,8 +280,17 @@ namespace Test_Report
         }
         private void добавтьГрафическийБлокToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            add_image_blocks();
-           
+            if (Program.Maquette_id == 0)
+            {
+                MessageBox.Show("Макет не выбран!");
+            }
+            else
+            {
+
+                add_image_blocks();
+                MessageBox.Show("Успешно добавлен!");
+            }
+
         }
 
         public void Load_text_blocks()
@@ -309,7 +371,17 @@ namespace Test_Report
 
         private void button_add2_Click(object sender, EventArgs e)
         {
-            add_image_blocks();
+            if (Program.Maquette_id == 0)
+            {
+                MessageBox.Show("Макет не выбран!");
+            }
+            else
+            {
+
+                add_image_blocks();
+                MessageBox.Show("Успешно добавлен!");
+            }
+           
         }
 
         private void button_delete1_Click(object sender, EventArgs e)
@@ -504,6 +576,13 @@ namespace Test_Report
             Load_image_blocks();
             Load_text_blocks();
             comboBox1.SelectedIndex = k2;
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            StreamWriter f = new StreamWriter("Maquette_id.txt");
+            f.WriteLine(Program.Maquette_id);
+            f.Close();
         }
     }
 }

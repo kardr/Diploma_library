@@ -22,7 +22,33 @@ namespace Diploma
             report = new Report();
         }
 
-       
+       public Report Create_maquette_fasrreport(int nid)
+        {
+            Maquette m = new Maquette();
+            m = m.Select_maquette_id(nid, connection_string);
+            Format f = new Format();
+            f = f.Select_format_id(m.id_fk_format, connection_string);
+            Add_report_page(f.Width, f.Height);
+            report.Pages.Add(page[0]);
+
+            page[0].ReportTitle = new ReportTitleBand();
+            page[0].ReportTitle.Name = "lkjhljkhlhnljkn";
+            // set its height to 1.5cm
+            page[0].ReportTitle.Height = Units.Millimeters*f.Height;
+            PictureObject picture = new PictureObject();
+            //picture.ForceLoadImage("C://Users//Svetlana//Desktop//1.jpg");
+
+
+            picture.Bounds = new RectangleF(0, 0, f.Width, f.Height); //Set object bounds
+            String s = Environment.CurrentDirectory + "\\Maquette\\" + m.Background_image;
+            picture.Image = new Bitmap(s); //Set picture
+            page[0].ReportTitle.Objects.Add(picture);
+
+
+
+            return report;
+
+        }
         public void Add_report_page(int widht, int height)
         {
             ReportPage page1 = new ReportPage();

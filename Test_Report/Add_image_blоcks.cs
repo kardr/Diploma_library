@@ -25,5 +25,10 @@ namespace Test_Report
                 label2.Text = openFileDialog1.FileName;
             }
         }
+
+        private void button_OK_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
