@@ -38,12 +38,112 @@ namespace Diploma
             PictureObject picture = new PictureObject();
             //picture.ForceLoadImage("C://Users//Svetlana//Desktop//1.jpg");
 
-
-            picture.Bounds = new RectangleF(0, 0, f.Width, f.Height); //Set object bounds
+            float w = Convert.ToSingle( Math.Round(f.Width * 3.8));
+            float h = Convert.ToSingle(Math.Round(f.Height * 3.8));
+            picture.Bounds = new RectangleF(0, 0, w, h); //Set object bounds
             String s = Environment.CurrentDirectory + "\\Maquette\\" + m.Background_image;
+
+            // Bitmap b1 = new Bitmap(s);
+            // Bitmap b2 = new Bitmap(b1, new Size(f.Width*4, f.Height*4));
+
+
+            // picture.Image = b2; //Set picture
+
             picture.Image = new Bitmap(s); //Set picture
             page[0].ReportTitle.Objects.Add(picture);
 
+
+            Text_blocks t = new Text_blocks();
+            List<Text_blocks> tb = t.Select_text_blocks(connection_string, nid);
+            for(int i=0; i<tb.Count; i++)
+            {
+                TextObject txt = new TextObject();
+                float wt = Convert.ToSingle(Math.Round(tb[i].Width * 3.8));
+                float ht = Convert.ToSingle(Math.Round(tb[i].Height * 3.8));
+                txt.Bounds = new RectangleF(tb[i].X, tb[i].Y, wt, ht);
+                txt.Text = tb[i].Content;
+                if (tb[i].Alignment_text.Trim() == "По левому краю")
+                {
+                    txt.HorzAlign = HorzAlign.Left;
+
+                    /*По левому краю*/
+                }
+                else if(tb[i].Alignment_text.Trim() == "По центру")
+                {
+                    txt.HorzAlign = HorzAlign.Center; //По центру
+                }
+
+                else if (tb[i].Alignment_text.Trim() == "По правому краю")
+                {
+                    txt.HorzAlign = HorzAlign.Right; //По правому краю
+                }
+
+                else if (tb[i].Alignment_text.Trim() == "По ширине")
+                {
+                    txt.HorzAlign = HorzAlign.Justify; //По ширине
+                }
+
+
+                FontStyle styl=FontStyle.Regular;
+                if (tb[i].Mark_text.Trim() == "Bold")
+                {
+                    styl = FontStyle.Bold;
+                
+                }
+
+                else if (tb[i].Mark_text.Trim() == "Italic")
+                {
+                    styl = FontStyle.Italic;
+
+                }
+
+                else if (tb[i].Mark_text.Trim() == "Underline")
+                {
+                    styl = FontStyle.Underline;
+
+                }
+
+                else if (tb[i].Mark_text.Trim() == "Regular")
+                {
+                    styl = FontStyle.Regular;
+
+                }
+
+                else if (tb[i].Mark_text.Trim() == "Strikeout")
+                {
+                    styl = FontStyle.Strikeout;
+
+                }
+                FontFamily fam = new FontFamily(tb[i].Font_type);
+                
+                txt.Font = new Font(fam, tb[i].Font_size, styl);
+                page[0].ReportTitle.Objects.Add(txt);
+
+            }
+
+
+            Image_blocks im = new Image_blocks();
+            List<Image_blocks> bl = im.Select_image_blocks(connection_string, nid);
+            for (int i = 0; i < bl.Count; i++)
+            {
+                PictureObject pict = new PictureObject();
+                //picture.ForceLoadImage("C://Users//Svetlana//Desktop//1.jpg");
+
+                float wp = Convert.ToSingle(Math.Round(bl[i].Width * 3.8));
+                float hp = Convert.ToSingle(Math.Round(bl[i].Height * 3.8));
+                pict.Bounds = new RectangleF(0, 0, wp, hp); //Set object bounds
+                String sp = Environment.CurrentDirectory + "\\Image_blocks\\" + bl[i].Image_content;
+                // Bitmap b1 = new Bitmap(s);
+                // Bitmap b2 = new Bitmap(b1, new Size(f.Width*4, f.Height*4));
+
+
+                // picture.Image = b2; //Set picture
+
+                pict.Image = new Bitmap(sp); //Set picture
+                page[0].ReportTitle.Objects.Add(pict);
+
+
+            }
 
 
             return report;
@@ -79,8 +179,12 @@ namespace Diploma
             PictureObject picture = new PictureObject();
             //picture.ForceLoadImage("C://Users//Svetlana//Desktop//1.jpg");
 
+            
+            picture.Bounds = new RectangleF(0, 0, nWidth,nHeight); //Set object bounds
 
-            picture.Bounds = new RectangleF(0, 0, nWidth*2,nHeight*2); //Set object bounds
+            //Bitmap b1 = new Bitmap(@"test.jpg");
+           // Bitmap b2 = new Bitmap(b1, new Size(100, 200));
+
             picture.Image = new Bitmap("D://CuL4jVhrLi0.jpg"); //Set picture
             page[0].ReportTitle.Objects.Add(picture);
 
@@ -96,6 +200,8 @@ namespace Diploma
             text1.Font = new Font("Times New Roman", 14, FontStyle.Italic);
             // add it to ReportTitle 
             page[0].ReportTitle.Objects.Add(text1);
+
+
 
             return report;
         }

@@ -22,9 +22,9 @@ namespace Test_Report
             Report report = di.Test_Report("yfhfhjfhjdfgd", n.Height, n.Width);*/
             Diploma.Diploma di = new Diploma.Diploma(Program.connection_str);
             Report report = di.Create_maquette_fasrreport(Program.Maquette_id);
-            report.Show();
+            // report.Show();
 
-
+            report.Design();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -238,6 +238,14 @@ namespace Test_Report
         public void add_text_blocks()
         {
             add_text_blocks f = new add_text_blocks();
+            f.comboBox1.Items.Add("По левому краю");
+            f.comboBox1.Items.Add("По центру");
+            f.comboBox1.Items.Add("По правому краю");
+            f.comboBox1.Items.Add("По ширине");
+            f.label6.Font = new Font("Tahoma", 14, FontStyle.Bold);
+            f.textBox3.Text = f.label6.Font.Name;
+            f.textBox4.Text = f.label6.Font.Style.ToString();
+            f.textBox5.Text = (Math.Round(f.label6.Font.Size)).ToString();
             if (f.ShowDialog() == DialogResult.OK)
             {
                 Diploma.Text_blocks t = new Diploma.Text_blocks();
@@ -270,11 +278,11 @@ namespace Test_Report
             if (f.ShowDialog() == DialogResult.OK)
             {
 
-                File.Copy(f.label2.Text, "Image_blocks//" + Path.GetFileName(f.label2.Text));
+                File.Copy(f.label2.Text, "Image_blocks//" + Path.GetFileName(f.label2.Text), true);
                 Diploma.Image_blocks i = new Diploma.Image_blocks();
-                i.Add_image_blocks(f.textBox1.Text, Path.GetFileName(f.label2.Text), Convert.ToInt32(f.numericUpDown3.Value),
-                    Convert.ToInt32(f.numericUpDown4.Value), Convert.ToInt32(f.numericUpDown1.Value),
-                    Convert.ToInt32(f.numericUpDown2.Value), Program.Maquette_id, Program.connection_str);
+                i.Add_image_blocks(f.textBox1.Text, Path.GetFileName(f.label2.Text), Convert.ToInt32(f.numericUpDown1.Value),
+                    Convert.ToInt32(f.numericUpDown2.Value), Convert.ToInt32(f.numericUpDown3.Value),
+                    Convert.ToInt32(f.numericUpDown4.Value), Program.Maquette_id, Program.connection_str);
             }
             Load_image_blocks();
         }
@@ -414,8 +422,16 @@ namespace Test_Report
         {
             if (dataGridView1.SelectedRows != null)
             {
-
+                /*По левому краю
+По центру
+По правому краю
+По ширине*/
                 add_text_blocks i = new add_text_blocks();
+                i.comboBox1.Items.Add("По левому краю");
+                i.comboBox1.Items.Add("По центру");
+                i.comboBox1.Items.Add("По правому краю");
+                i.comboBox1.Items.Add("По ширине");
+
                 int tt = Convert.ToInt32(dataGridView1.SelectedCells[0].RowIndex);
                 Diploma.Text_blocks f = new Diploma.Text_blocks();
                 int id = Convert.ToInt32(dataGridView1[0, tt].Value);
@@ -426,10 +442,18 @@ namespace Test_Report
                 i.numericUpDown2.Value = f.Y;
                 i.numericUpDown3.Value = f.Height;
                 i.numericUpDown4.Value = f.Width;
-                i.comboBox1.Text = f.Alignment_text;
+                //i.comboBox1.Text = f.Alignment_text;
                 i.textBox3.Text = f.Font_type;
                 i.textBox4.Text = f.Mark_text;
                 i.textBox5.Text = f.Font_size.ToString();
+                for (int j=0; j<i.comboBox1.Items.Count; j++)
+                {
+                    if(i.comboBox1.Items[j].ToString()== f.Alignment_text)
+                    {
+                        i.comboBox1.SelectedIndex = j;
+                        break;
+                    }
+                }
 
                 if (i.ShowDialog() == DialogResult.OK)
                 {
@@ -472,9 +496,10 @@ namespace Test_Report
                     {
 
                     }
-                    f.Update_image_blocks(f.id, i.textBox1.Text, Path.GetFileName(i.label2.Text), Convert.ToInt32(i.numericUpDown3.Value),
-                    Convert.ToInt32(i.numericUpDown4.Value), Convert.ToInt32(i.numericUpDown1.Value),
-                    Convert.ToInt32(i.numericUpDown2.Value), Program.connection_str);
+                    f.Update_image_blocks(f.id, i.textBox1.Text, Path.GetFileName(i.label2.Text), 
+                        Convert.ToInt32(i.numericUpDown1.Value),
+                    Convert.ToInt32(i.numericUpDown2.Value), Convert.ToInt32(i.numericUpDown3.Value),
+                    Convert.ToInt32(i.numericUpDown4.Value), Program.connection_str);
 
                 }
 

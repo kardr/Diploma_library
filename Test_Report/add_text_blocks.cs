@@ -32,7 +32,7 @@ namespace Test_Report
 
         private void add_text_blocks_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex = 0;
+            
         }
 
         private void label10_Click(object sender, EventArgs e)
