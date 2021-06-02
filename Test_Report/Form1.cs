@@ -22,9 +22,9 @@ namespace Test_Report
             Report report = di.Test_Report("yfhfhjfhjdfgd", n.Height, n.Width);*/
             Diploma.Diploma di = new Diploma.Diploma(Program.connection_str);
             Report report = di.Create_maquette_fasrreport(Program.Maquette_id);
-            // report.Show();
+             report.Show();
 
-            report.Design();
+            //report.Design();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -222,7 +222,7 @@ namespace Test_Report
             else { 
 
                 add_text_blocks();
-                MessageBox.Show("Успешно добавлен!");
+              
             }
         }
 
@@ -253,7 +253,7 @@ namespace Test_Report
                    f.textBox4.Text, Convert.ToInt32(f.textBox5.Text), Convert.ToInt32(f.numericUpDown3.Value),
                    Convert.ToInt32(f.numericUpDown4.Value), Convert.ToInt32(f.numericUpDown1.Value),
                    Convert.ToInt32(f.numericUpDown2.Value), Program.Maquette_id, Program.connection_str);
-
+                MessageBox.Show("Успешно добавлен!");
             }
             Load_text_blocks();
         }
