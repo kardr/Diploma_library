@@ -164,48 +164,6 @@ namespace Diploma
             page[0].BottomMargin = 0;
         }
 
-         public  Report Test_Report(string titel, int nHeight, int nWidth)
-        {
-
-            Add_report_page(nHeight, nWidth);
-            // create ReportTitle band 
-            page[0].ReportTitle = new ReportTitleBand();
-            page[0].ReportTitle.Name = titel;
-            // set its height to 1.5cm
-            page[0].ReportTitle.Height = Units.Centimeters * 1.5f;
-            
-
-
-            PictureObject picture = new PictureObject();
-            //picture.ForceLoadImage("C://Users//Svetlana//Desktop//1.jpg");
-
-            
-            picture.Bounds = new RectangleF(0, 0, nWidth,nHeight); //Set object bounds
-
-            //Bitmap b1 = new Bitmap(@"test.jpg");
-           // Bitmap b2 = new Bitmap(b1, new Size(100, 200));
-
-            picture.Image = new Bitmap("D://CuL4jVhrLi0.jpg"); //Set picture
-            page[0].ReportTitle.Objects.Add(picture);
-
-
-            TextObject text1 = new TextObject(); 
-            text1.Name = "Text1";
-            // set bounds
-            text1.Bounds = new RectangleF(0, 0, Units.Centimeters * 19, Units.Centimeters * 1);
-            // set text
-            text1.Text = titel;
-            // set appearance
-            text1.HorzAlign = HorzAlign.Center;
-            text1.Font = new Font("Times New Roman", 14, FontStyle.Italic);
-            // add it to ReportTitle 
-            page[0].ReportTitle.Objects.Add(text1);
-
-
-
-            return report;
-        }
-
         public void Diploma_add_maquette()
         {
             Maquette a = new Maquette();

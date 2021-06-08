@@ -46,6 +46,7 @@ namespace Test_Report
                 Diploma.Format f = new Diploma.Format();
                 int id = Convert.ToInt32(dataGridView1[3, tt].Value);
                 f.Delete_Format(id, Program.connection_str);
+                MessageBox.Show("Удаление  успешно!");
                 Load_Format();
             }
         }
@@ -66,6 +67,7 @@ namespace Test_Report
                 if(i.ShowDialog() == DialogResult.OK)
                 {
                     f.Update_format(f.id, i.textBox1.Text, Convert.ToInt32(i.numericUpDown2.Value), Convert.ToInt32(i.numericUpDown1.Value), Program.connection_str);
+                    MessageBox.Show("Редактирование успешно!");
                 }
                 
                 Load_Format();

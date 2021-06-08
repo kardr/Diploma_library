@@ -163,6 +163,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Redact_delete_format.resx">
       <DependentUpon>Redact_delete_format.cs</DependentUpon>
@@ -185,6 +186,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6-61768_blue-square-right-arrow-icon-clip-art-photo-png-images-right-arrow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6-61768_blue-square-right-arrow-icon-clip-art-photo-png-images-right-arrow1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward_icon-icons.com_52386.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward_icon-icons.com_523861.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

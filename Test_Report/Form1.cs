@@ -283,6 +283,7 @@ namespace Test_Report
                 i.Add_image_blocks(f.textBox1.Text, Path.GetFileName(f.label2.Text), Convert.ToInt32(f.numericUpDown1.Value),
                     Convert.ToInt32(f.numericUpDown2.Value), Convert.ToInt32(f.numericUpDown3.Value),
                     Convert.ToInt32(f.numericUpDown4.Value), Program.Maquette_id, Program.connection_str);
+                MessageBox.Show("Успешно добавлен!");
             }
             Load_image_blocks();
         }
@@ -387,7 +388,7 @@ namespace Test_Report
             {
 
                 add_image_blocks();
-                MessageBox.Show("Успешно добавлен!");
+               
             }
            
         }
@@ -401,6 +402,7 @@ namespace Test_Report
                 Diploma.Text_blocks f = new Diploma.Text_blocks();
                 int id = Convert.ToInt32(dataGridView1[0, tt].Value);
                 f.Delete_text_blocks(id, Program.connection_str);
+                MessageBox.Show("Удаление  успешно!");
                 Load_text_blocks();
             }
         }
@@ -414,6 +416,7 @@ namespace Test_Report
                 Diploma.Image_blocks f = new Diploma.Image_blocks();
                 int id = Convert.ToInt32(dataGridView2[0, tt].Value);
                 f.Delete_image_blocks(id, Program.connection_str);
+                MessageBox.Show("Удаление  успешно!");
                 Load_image_blocks();
             }
         }
@@ -461,10 +464,10 @@ namespace Test_Report
                   i.textBox4.Text, Convert.ToInt32(i.textBox5.Text), Convert.ToInt32(i.numericUpDown3.Value),
                   Convert.ToInt32(i.numericUpDown4.Value), Convert.ToInt32(i.numericUpDown1.Value),
                   Convert.ToInt32(i.numericUpDown2.Value), Program.connection_str);
+                    MessageBox.Show("Редактирование успешно!");
 
-                    
                 }
-
+               
                 Load_text_blocks();
             }
         }
@@ -500,7 +503,7 @@ namespace Test_Report
                         Convert.ToInt32(i.numericUpDown1.Value),
                     Convert.ToInt32(i.numericUpDown2.Value), Convert.ToInt32(i.numericUpDown3.Value),
                     Convert.ToInt32(i.numericUpDown4.Value), Program.connection_str);
-
+                    MessageBox.Show("Редактирование успешно!");
                 }
 
                 Load_image_blocks();
@@ -575,8 +578,8 @@ namespace Test_Report
                 int id_f = (i.comboBox1.Items[i.comboBox1.SelectedIndex] as Diploma.Format).id;
                 f.Update_maquette(Program.Maquette_id, i.textBox1.Text, Path.GetFileName(i.label2.Text), i.pictureBox2.BackColor.ToString(),
                     Convert.ToInt32(i.numericUpDown1.Value), Convert.ToInt32(i.numericUpDown2.Value), id_f, Program.connection_str);
-                
 
+                MessageBox.Show("Редактирование успешно!");
             }
 
             Program.Maquette_id = id_pic;
@@ -608,6 +611,15 @@ namespace Test_Report
             StreamWriter f = new StreamWriter("Maquette_id.txt");
             f.WriteLine(Program.Maquette_id);
             f.Close();
+        }
+
+        private void button2_Click_2(object sender, EventArgs e)
+        {
+            Diploma.Diploma di = new Diploma.Diploma(Program.connection_str);
+            Report report = di.Create_maquette_fasrreport(Program.Maquette_id);
+           // report.Show();
+
+            report.Design();
         }
     }
 }

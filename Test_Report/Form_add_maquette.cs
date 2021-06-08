@@ -52,5 +52,10 @@ namespace Test_Report
         {
 
         }
+
+        private void numericUpDown2_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
